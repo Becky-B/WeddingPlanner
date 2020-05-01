@@ -1,0 +1,44 @@
+@model Wedding
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <title>Document</title>
+</head>
+<body>
+    <div class="jumbotron">
+        <div class="row">
+            <div class="col-sm-6 text-center">
+                <h1>@Model.Wedder1 & @Model.Wedder2's Wedding</h1>
+            </div>
+            <div class="col-sm-6 text-center">
+                <h4><a asp-action="Dashboard">Dashboard</a> | <a asp-action="LogOut">LogOut</a></h4>
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-6">
+                <h3>Date: @Model.Date</h3>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-4">  
+                <h2>Guests:</h2>
+            </div>
+        </div>
+        <div class="row">
+            @foreach (Guest guest in Model.Guests)
+            {
+            <div class="col-sm-8">
+                <ul class="list-unstyled">
+                    <li><h5>@guest.User.FirstName @guest.User.LastName</h5></li>
+                </ul>
+            </div>
+            }
+        </div>
+    </div>
+</body>
+</html>

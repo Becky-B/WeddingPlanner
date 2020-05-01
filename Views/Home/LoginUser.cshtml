@@ -1,0 +1,40 @@
+@model LoginUser
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <title>Login</title>
+</head>
+<body>
+    <div class="jumbotron">
+        <div class="row">
+            <div class="col-sm-6 text-center">
+                <h1>Login Into This Cool Site!</h1>
+            </div>
+            <div class="col-sm-6 text-center-">
+                <h3><a href="/">Register</a></h3>
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <form asp-action="Login" asp-controller="Home" method="post">
+            <div class="row">
+                <div class="col-sm-4 form-group h3">
+                    <span asp-validation-for="LoginEmail"></span>
+                    <label asp-for="LoginEmail">Email: </label>
+                    <input type="email" asp-for="LoginEmail">
+                <br>
+                    <span asp-validation-for="LoginPassword"></span>
+                    <label asp-for="LoginPassword">Password: </label>
+                    <input type="password" asp-for="LoginPassword">
+                <br>
+                    <input type="submit" value="Log In Now!">
+                </div>
+            </div>
+        </form>
+    </div>
+    
+</body>
+</html>

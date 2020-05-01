@@ -1,0 +1,65 @@
+@model WeddingUserW
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <title>Dashboard</title>
+</head>
+<body>
+        <div class="jumbotron">
+        <div class="row">
+            <div class="col-sm-6 text-center">
+                <h1>Welcome to the Wedding Planner, @Model.user.FirstName!</h1>
+            </div>
+            <div class="col-lg-10 text-right">
+                <h3><a asp-action="LogOut">Log out</a></h3>
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <div class="row">
+            <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th>Wedding</th>
+                            <th>Date</th>
+                            <th># of Guests</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody style="width:800px;height:400px;line-height:3em;overflow:auto;padding:5px;">
+                        <tr>
+                            @foreach (var wedding in Model.Allweddings.OrderBy(w => w.Date))
+                            {
+                                <tr>
+                                    <td><a asp-action="ViewWedding" asp-route-WeddingId="@wedding.WeddingId">@wedding.Wedder1 & @wedding.Wedder2</a></td>
+                                    <td>@wedding.Date</td>
+                                    <td>@wedding.Guests.Count</td>
+                                    <td>
+                                        @if(!wedding.Guests.Any( u => u.UserId == Model.user.UserId))
+                                        {
+                                            <a href="RSVP/@wedding.WeddingId">RSVP</a>
+                                        }
+                                        else
+                                        {
+                                            <a href="UNRSVP/@wedding.WeddingId">UN-RSVP</a>
+                                        }
+                                        @if(wedding.UserId == Model.user.UserId)
+                                        {
+                                            <a href="Delete/@wedding.WeddingId">Delete</a>
+                                        }
+                                    </td>
+                                </tr>
+                            }
+                        </tr>
+                    </tbody>
+                </table>
+        </div>
+    </div>
+    <div class="col-lg-10 text-right">
+        <h4><a asp-action="NewWedding">Add Wedding</a></h4>
+    </div>
+</body>
+</html>

@@ -1,0 +1,50 @@
+@model WeddingUserW
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <title>Document</title>
+</head>
+<body>
+    <div class="jumbotron">
+        <div class="row">
+            <div class="col-sm-6 text-center">
+                <h1>Add a Wedding</h1>
+            </div>
+            <div class="col-sm-6 text-center">
+                <h4><a asp-action="Dashboard">Dashboard</a> | <a asp-action="LogOut">LogOut</a></h4>
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <form asp-action="AddWedding" asp-controller="Home" method="post">
+            <div class="form-group">
+                <span class="text-danger" asp-validation-for="wedding.Wedder1"></span>
+                <label asp-for="wedding.Wedder1">Wedder One: </label>
+                <input type="text" asp-for="wedding.Wedder1">
+            </div>
+            <div class="form-group">
+                <span class="text-danger" asp-validation-for="wedding.Wedder2"></span>
+                <label asp-for="wedding.Wedder2">Wedder Two: </label>
+                <input type="text" asp-for="wedding.Wedder2">
+            </div>
+            <div class="form-group">
+                <span class="text-danger" asp-validation-for="wedding.Date"></span>
+                <label asp-for="wedding.Date">Date: </label>
+                <input type="date" asp-for="wedding.Date">
+            </div>
+            <div class="form-group">
+                <span class="text-danger" asp-validation-for="wedding.Address"></span>
+                <label asp-for="wedding.Address">Street Address: </label>
+                <input type="text" asp-for="wedding.Address">
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Add Wedding">
+            </div>
+        </form>
+    </div>
+    
+</body>
+</html>

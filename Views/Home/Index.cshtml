@@ -1,0 +1,55 @@
+@model User
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <title>Register</title>
+</head>
+<body>
+    <div class="jumbotron">
+        <div class="row">
+            <div class="col-sm-6 text-center">
+                <h1>Register to this Cool Site!</h1>
+            </div>
+            <div class="col-sm-6 text-center-">
+                <h3><a asp-action="LoginUser">Login</a></h3>
+            </div>
+        </div>
+    </div>
+    <div class="container">
+    <form asp-action="register" asp-controller="Home" method="post">
+        <div class="row">
+            <div class="col-sm-4 form-group h3">
+                <span asp-validation-for="FirstName"></span>
+                <label asp-for="FirstName">First Name: </label>
+                <input type="text" asp-for="FirstName">
+            <br>
+                <span asp-validation-for="LastName"></span>
+                <label asp-for="LastName">Last Name: </label>
+                <input type="text" asp-for="LastName">
+            <br>
+                <span asp-validation-for="Email"></span>
+                <label asp-for="Email">Email: </label>
+                <input type="email" asp-for="Email">
+                <br>
+                <input type="submit" value="Sign Up Now!">
+            </div>
+            <div class="col-sm-4 form-group h3">
+                <span asp-validation-for="Password"></span>
+                <label asp-for="Password">Password: </label>
+                <input type="password" asp-for="Password">
+            <br>
+                <span asp-validation-for="Comfirm"></span>
+                <label asp-for="Comfirm">Confirm Password: </label>
+                <input type="password" asp-for="Comfirm">
+            </div>
+        </div>
+    </form>
+    </div>
+
+    
+    
+</body>
+</html>
